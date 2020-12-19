@@ -1,0 +1,6 @@
+1) Communication between "Vue.js" component:
+  i)PlanPickerComponent (parent)
+  ii)planComponent      (child)
+  
+  - parent cannot know if a click event occured on child using props
+  -> So we will be using "Custom events"

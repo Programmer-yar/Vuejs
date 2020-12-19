@@ -1,0 +1,68 @@
+<!--  videos from Vue Components course by Vue School-->
+<!-- 
+- Making components in 'app.js' and using them here 
+- In this docuemnt we cover:
+1) Global and Local components
+2) Communication between Components 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue.js Component Fundamentals</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/main.css">
+  </head>
+
+  <body>
+    <div id="app">
+    	<div>
+    		<h1>Coffee Plans</h1>
+
+    		<h2>
+    			We travel the world to source the very best coffee for you.
+    		</h2>
+
+
+    		<div>
+    			<!-- Below component will not produce any output and throw an error beacuse it is changed from global to local --> 
+    			<PlanPickerItemComponent name="The Premium"></PlanPickerItemComponent>
+    			<hr>
+    			
+    		</div>
+
+    		<plan-picker></plan-picker>
+
+    	</div>
+    	
+
+    </div>
+
+    <script type="text/html" id="plan-picker-template">
+
+    	<div>
+    		<plan-picker-item v-for="plan in plans" :name="plan"
+         @select="selectPlan" :selectedPlan="selectedPlan"></plan-picker-item>
+    	</div>
+
+    </script>
+
+    <script type="text/html" id="plan-picker-item-template">
+
+    	<div class="list-style" @click="select" 
+      :class="{'active-item': isSelected}">
+				<div>
+					<span>
+						{{ name }}
+					</span>
+				</div>
+			</div>
+ 
+    </script>
+    
+    <!-- "../" takes you one directory back and "../../" takes you 2 directories back while "." takes the current directory -->
+    <script src="../../assets/vue.js"></script> 
+    <script src="app.js" ></script>
+  </body>
+</html>
