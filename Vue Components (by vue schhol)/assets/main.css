@@ -1,0 +1,32 @@
+body {
+  
+  display: flex;
+  align-items: center;
+  justify-content: center  
+}
+
+.strikeout {
+	color: grey;
+	text-decoration: line-through;
+}
+
+.priority {
+	color: red;
+}
+
+.list-style {
+	background-color: lightgreen;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 20px;
+	margin-bottom: 5px;
+}
+
+.list-style:hover {
+	border-bottom: 5px solid forestgreen;
+	border-top: 5px solid forestgreen;
+}
+
+.active-item {
+	border: 5px solid green;
+}
