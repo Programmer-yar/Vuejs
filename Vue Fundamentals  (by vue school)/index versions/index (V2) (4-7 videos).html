@@ -1,0 +1,89 @@
+<!--  videos from Vue Fundamentals course by Vue School-->
+<!--
+This version covers topics:
+- Event Listeners         - Methods in vue
+- if else in vue          - Using console for debugging and testing
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Shopping List App</title>
+    <link rel="stylesheet" type="text/css" href="../assets/main.css">
+  </head>
+
+  <body>
+    <div id="shopping-list">
+
+      <div>
+    	  <h1>{{ header.toLocaleUpperCase() }}</h1>
+        <button v-if="state === 'default'" @click="changeState('edit')">Add Item</button>
+        <button v-else @click="changeState('default')">Cancel</button>
+      </div>
+
+      <!-- The below 'div' will only be visible for state='edit' -->
+      <div id="form" v-if="state === 'edit'">
+        <!-- 'v-model' to bind 'newItem' from 'data' -->
+        <!-- 'v-on:' or '@' to add all kind of event listeners suuported by JS -->
+        <!-- 'keyup.enter' listens to 'enter' key only -->
+        <input type="text" v-model="newItem" @keyup.enter="saveItem" placeholder="Add an item...">
+        <button v-on:click="saveItem">Save Item</button>
+      </div>
+        
+
+    	<!-- Using 'v-for' directive for looping  -->
+    	<!-- To check 'v-for' reactivity see point#4 in 'Notes v1.txt' -->
+    	<ul>
+    		<li v-for="item in items"> {{ item }} </li>
+    	</ul>
+      <p v-if="items.length === 0">You bought all items!</p>
+
+    </div>
+    
+    <script src="../assets/vue.js"></script> 
+    <script>
+    	var shoppingList = new Vue({ //creating new 'Vue' instance
+    		el: '#shopping-list',
+    		//data property stores data for instances use
+    		data: {
+          state: 'default',      //for toggling form
+    			header: 'Shopping List App',
+    			newItem: '',
+          //for adding new items to 'items' see "Notes V2.txt" 'point#2'
+          
+    			items: [     
+    			'10 party hats',
+    			'2 cakes',
+    			'6 bottles'
+    			]
+    			
+    		},
+
+        methods: {
+          /*
+          - 'data' items can be accessed using 'this' keyword inside 'methods'.
+          - 'this' keyword can be corelated to '$vm0' used in console
+          - 'methods' can also be tested in console, It is good for testing 
+             and debugging see point#4 Notes V2.txt
+          */
+          saveItem: function() {
+            if(this.newItem != '') //to avoid adding empty list items
+            {
+            this.items.push(this.newItem);
+            this.newItem = '';
+            }
+          },
+
+          changeState: function(newState) {
+            this.state = newState;
+
+            this.newItem = '';
+          }
+
+        }
+    	});
+    </script>
+  </body>
+</html>

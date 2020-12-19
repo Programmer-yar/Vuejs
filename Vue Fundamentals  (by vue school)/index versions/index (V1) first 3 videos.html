@@ -1,0 +1,53 @@
+<!-- First 3 videos from Vue Fundamentals course -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Shopping List App</title>
+    <link rel="stylesheet" type="text/css" href="../assets/main.css">
+  </head>
+  <body>
+    <div id="shopping-list">
+    	<!-- Can also add JS methods inside double curly brackets -->
+    	<!-- For capabilities of '{{}}' read point 2 from Notes.txt -->
+    	<!-- For limitations of '{{}}' read point 3 from Notes.txt -->
+    	<h1>{{ header.toLocaleUpperCase() }}</h1>
+
+    	<!-- Asign 'v-model' directive to bind the 'header' from 'data' with input field i.e text in input is synchronised with header
+    	-> Read point '1)' in Notes V1.txt for more explanation-->
+    	<input type="text" v-model="header">
+
+    	<!-- Read point#2 of Notes V1.txt for explanation -->
+    	<h2>{{ myString ? myString : 'Statement in double curly executed' }}
+    	</h2>
+
+    	<!-- Uisng 'v-for' directive for looping -->
+    	<!-- To check 'v-for' reactivity see point#4 in 'Notes.txt' -->
+    	<ul>
+    		<li v-for="item in items"> {{ item }} </li>
+    	</ul>
+
+    </div>
+    <!-- Include 'Vue.js' just like 'JQuery' -->
+    <script src="../assets/vue.js"></script> 
+    <script>
+    	//'Vue' instance was stored in variable to access it in console
+    	var shoppingList = new Vue({ //creating new 'Vue' instance
+    		el: '#shopping-list',
+    		//data property stores data for instances use
+    		data: {
+    			header: 'Shopping List App',
+    			myString: null,
+    			items: [     //For 'push', 'pop' see Point#4 in Notes V1.txt
+    			'10 party hats',
+    			'2 cakes',
+    			'6 bottles'
+    			]
+    			
+    		}
+    	});
+    </script>
+  </body>
+</html>

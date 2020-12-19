@@ -1,0 +1,24 @@
+1) 'vue' binds data both ways, updating 'text input' updates the 'header'
+  and also updating 'header' updates the 'input'
+- To verify above property create a new variable 'shoppingList' equal to 
+  new 'Vue' instance inside <script>
+- Goto browser console and type "shoppingList.$data.header = 'written from 
+  console'" 
+  ----------------------------------------------------------------------
+2) Capabilities:
+- JS methods can be called on variables inside '{{}}' 
+  like {{ variable.toLocaleUpperCase() }}
+- Short 'if' statements can be used inside '{{}}' using syntax 
+  '{{ myVariable ? myVariable : 420 }}' translates as below
+  "if myVariable contains a value print it
+  else print the value specified in '{{}}'"
+
+3) Limitations: Only one expression can be used in one '{{}}'
+   You cannot 'declare variables' and evaluate 'if' statements inside
+   '{{}}'. 
+------------------------------------------------------------------------
+4) v-for:
+- To check 'v-for' reactivity goto console and and write
+  "shoppingList.$data.items.push('Awesome vue Fundamentals');" and also
+  "shoppingList.$data.items.pop();"
+

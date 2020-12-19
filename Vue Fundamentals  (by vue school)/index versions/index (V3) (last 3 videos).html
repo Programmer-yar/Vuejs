@@ -1,0 +1,129 @@
+<!--  videos from Vue Fundamentals course by Vue School-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Shopping List App</title>
+    <link rel="stylesheet" type="text/css" href="../assets/main.css">
+  </head>
+
+  <body>
+    <div id="shopping-list">
+
+      <div>
+    	  <h1>{{ header.toLocaleUpperCase() }}</h1>
+        <button v-if="state === 'default'" @click="changeState('edit')">Add Item</button>
+        <button v-else @click="changeState('default')">Cancel</button>
+      </div>
+
+      
+      <div id="form" v-if="state === 'edit'">
+        <input type="text" v-model="newItem" @keyup.enter="saveItem" placeholder="Add an item...">
+        <p>{{ characterCount }}/200</p>
+        <!-- By using 'v-bind' with 'disabled' attribute the'If' statement in 'saveItem' method will not be required 
+        - 'v-bind' can also be implemented using syntax ':disabled="newItem.length === 0"' --> 
+        <button v-on:click="saveItem" 
+        v-bind:disabled="newItem.length === 0">Save Item</button>
+      </div>
+
+      <!-- Using 'v-bind' to make dynamic html attributes -->
+      <a v-bind:href="newItem" target="_blank">Dynamic Link</a>        
+
+			<ul>
+				<!-- 
+				- 'reversedItems' from 'computed' properties
+				- Binding conditional class using 'v-bind'
+				- "strikeout" class is conditional while "priority class" is 
+				   common 
+			  - 'priority' class can be added outside v-bind
+				-->
+
+				<li v-for="item in reversedItems" :class="[{ strikeout: item.purchased }, { priority: item.highPriority }]" @click="completed(item)"> {{ item.label }} </li>
+			</ul>
+      <p v-if="items.length === 0">You bought all items!</p>
+
+    </div>
+    
+    <script src="../assets/vue.js"></script> 
+    <script>
+    	var shoppingList = new Vue({ //creating new 'Vue' instance
+    		el: '#shopping-list',
+    		//data property stores data for instances use
+    		data: {
+          state: 'default',      //for toggling form
+    			header: 'Shopping List App',
+    			newItem: '',
+          //for adding new items to 'items' see "Notes V2.txt" 'point#2'
+          
+    			items: [     
+    			{
+    				label:'10 party hats',
+    				purchased: false,
+    				highPriority: false
+    			},
+    			{
+    				label:'2 cakes',
+    				purchased: true,
+    				highPriority: false
+    			},
+    			{
+    				label:'6 bottles',
+    				purchased: false,
+    				highPriority: true
+    			}
+
+    			]
+    			
+    		},
+
+    		/*
+    		"Computed" properties are used to perform (temporary) calculations and transformations
+    		*/
+    		computed: {
+    			characterCount() {
+    				return this.newItem.length;
+    			},
+
+    			reversedItems() {
+    				return this.items.slice(0).reverse();
+    			}
+    		},
+
+        methods: {
+          /*
+          - 'data' items can be accessed using 'this' keyword inside 'methods'.
+          - 'this' keyword can be corelated to '$vm0' used in console
+          - 'methods' can also be tested in console, It is good for testing 
+             and debugging see point#4 Notes V2.txt
+          */
+          saveItem: function() {
+          /*
+            if statement in previous versions is removed and
+            we use 'v-bind' to fulfil that condition
+          */
+            this.items.push({
+            	label: this.newItem,
+            	purchased: false
+            });
+
+            this.newItem = '';
+          },
+
+          changeState: function(newState) {
+            this.state = newState;
+
+            this.newItem = '';
+          },
+
+          completed: function(item) {
+          	item.purchased = !item.purchased;
+          }
+
+        },
+        
+    	});
+    </script>
+  </body>
+</html>

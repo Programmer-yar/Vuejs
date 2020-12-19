@@ -1,0 +1,26 @@
+1) v-bind directive: (binding dynamic html attribute to data)
+   - Disabling 'Save Item' button when Input length is 0
+   the syntax is:
+   'v-bind:disabled="newItem.length === 0"'   or
+   ':disabled="newItem.length === 0"'
+--------------------------------------------------------------------
+2) Adding Dynamic CSS Classes using v-bind:
+   - We changed 'items' and placed objects instead of items
+   - We can pass additional data with classes
+   - 2 syntax for for binding CSS classes
+     ' :class="{strikeout: item.purchased}" '
+     ' :class="[item.purchased ? 'srikeout' : '']" '
+
+     for binding 2 classes:
+     :class="[item.purchased ? 'srikeout' : '', item.highPriority ? 'priority': '' ]"
+     --> The arrat syntax not working, dont know <--
+     ' v-bind:class="{ strikeout: item.purchased, priority: item.highPriority }" '
+
+     -> Use 'array' syntax when you want more control and use 'object'
+       syntax when you want to keep it simple 
+----------------------------------------------------------------------
+3) Computed Properties:
+   - perform transformations or calculations on data only for presentation
+   purposes, which means that it should never be used to perform actual changes to data
+   - to perform some actual changes use 'methods' or perform calculations at
+   backend

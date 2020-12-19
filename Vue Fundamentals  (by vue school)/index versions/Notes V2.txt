@@ -1,0 +1,23 @@
+1) Goto to console and type "shoppingList.$data.newItem = 'One must start from very basic';" to add data to input field reactively
+- Enable "Vue js devtools": Goto "Vue js devtools" settings and enable 
+  "Allow access to file URLs"
+-----------------------------------------------------------------------
+2) '$vm0.items' to output 'items' contents in console only
+- To add new items to 'items' array, first set 'newItem' to something
+  in console. e.g " $vm0.newItem = 'A wonderful Vue course'; "
+  then push it to 'items' array using "$vm0.items.push($vm0.newItem);"
+
+3) Event Listeners in Vue:
+- Implement the point#2 console code using 
+  ' v-on:click="items.push(newItem)" '
+  ' v-on:keyup.enter="items.push(newItem)" '
+  or use shortcut syntax by replacing 'v-on' with '@'
+  ' @click="items.push(newItem)" '
+  ' @keyup.enter="items.push(newItem)" '
+--------------------------------------------------------------------------
+4) Methods in Vue:
+- We can create 'methods' in 'Vue' instance
+- Testing methods in console using '$vm0.methodName()'
+--------------------------------------------------------------------------
+5) Toggling Items using 'v-if' directive:
+- Change the 'state' from 'default' to 'edit' in Vue js devtools and check
