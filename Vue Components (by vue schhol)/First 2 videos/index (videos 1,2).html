@@ -1,0 +1,39 @@
+<!--  videos from Vue Components course by Vue School-->
+<!-- Making components in 'app.js' and using them here --> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue.js Component Fundamentals</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/main.css">
+  </head>
+
+  <body>
+    <div id="app">
+    	<h1>Vue.js Component Fundamentals</h1>
+    	<click-counter></click-counter>
+    	<click-counter></click-counter>
+    	<click-counter></click-counter>
+    	<click-counter></click-counter>
+
+    </div>
+
+    <script type="text/html" id="click-counter-template">
+    	<!-- 2nd Method for defining template-->
+    	<!-- template should contain exactly 1 root element
+    	i.e <p> and <button> are 2 elements and without <div> wrapper
+    	it will throw an error -->
+    	<div>
+    		<p>the count is:</p>
+    		<button @click=count++ >{{ count }}</button>
+    	</div>
+ 
+    </script>
+    
+    <!-- "../" takes you one directory back and "../../" takes you 2 directories back while "." takes the current directory -->
+    <script src="../../assets/vue.js"></script> 
+    <script src="app.js" ></script>
+  </body>
+</html>
