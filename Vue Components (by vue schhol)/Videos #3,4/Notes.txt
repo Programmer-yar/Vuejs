@@ -1,0 +1,11 @@
+1)Props:
+  - Are custom attributes that you can register on a component
+  - Define the 'props' in the elements like this
+   " <plan name="The Hacker"></plan> "   ->  'name' is a "prop"
+  - then in "app.js" define the "props" option to accept "name" attribute 
+  	by the component 
+
+ -> "props" defined using array method as:
+ 	" props: ['name'] "
+----------------------------------------------------------------
+2)Nested Components:

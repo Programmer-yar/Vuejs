@@ -1,0 +1,72 @@
+<!--  videos from Vue Components course by Vue School-->
+<!-- 
+- Making components in 'app.js' and using them here 
+- In this docuemnt we cover 'props' 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue.js Component Fundamentals</title>
+    <link rel="stylesheet" type="text/css" href="../../assets/main.css">
+  </head>
+
+  <body>
+    <div id="app">
+    	<div>
+    		<h1>Coffee Plans</h1>
+
+    		<h2>
+    			We travel the world to source the very best coffee for you.
+    		</h2>
+
+
+    		<div>
+    			<!-- Here "name" is a 'prop'
+    				- "props" are custom attributes (see Notes.txt p#1)
+    				- In 'app.js' 'Vue' instance define the array to contain all the plan names and then use "v-for" to make it more short
+    				- Use "v-bind" to bind it to the attribute or else it will
+    				  not work -->
+    			<plan v-for="plan in plans" :name="plan"></plan>
+    			<plan name="The Premium"></plan>
+    			<hr>
+    			
+    		</div>
+
+    		<!-- Nested componets 
+    		- Write the template inside with "id=plan-picker-template"
+    		- Define the component in "app.js"
+        	- with this template display entire list anywhere on page
+    		-->
+    		<plan-picker></plan-picker>
+    	</div>
+    	
+
+    </div>
+
+    <script type="text/html" id="plan-picker-template">
+
+    	<div>
+    		<plan v-for="plan in plans" :name="plan"></plan>
+    	</div>
+
+    </script>
+
+    <script type="text/html" id="plan-template">
+    	<div class="list-style">
+				<div>
+					<span>
+						{{ name }}
+					</span>
+				</div>
+			</div>
+ 
+    </script>
+    
+    <!-- "../" takes you one directory back and "../../" takes you 2 directories back while "." takes the current directory -->
+    <script src="../../assets/vue.js"></script> 
+    <script src="app.js" ></script>
+  </body>
+</html>
